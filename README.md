@@ -3,8 +3,8 @@ $_POST, $_GET, $_REQUEST and wp_verify_nonce
 
 # How to use ?
 Make a test folder in your plugin and copy nonce.test.php and request.test.php in the test folder.
-For nonce : http://yourwordpressurl.com/wp-content/plugins/yourplugin/test/nonce.test.php
-For request : http://yourwordpressurl.com/wp-content/plugins/yourplugin/test/request.test.php
+* For nonce : http://yourwordpressurl.com/wp-content/plugins/yourplugin/test/nonce.test.php
+* For request : http://yourwordpressurl.com/wp-content/plugins/yourplugin/test/request.test.php
 
 # Use it with travis-ci
 If you use it with travis-ci, all developper can see your WordPress plugin is properly securized.
@@ -14,7 +14,7 @@ If you use it with travis-ci, all developper can see your WordPress plugin is pr
 * [Example Failed](https://github.com/labodudev/wordpress-validator/tree/example_failed)
 
 # $_POST, $_GET, $_REQUEST
-When you use $_POST, $_GET or $_REQUEST you need to securize it. 
+When you use $_POST, $_GET or $_REQUEST you need to securize it.
 If they're not protected, wordpress-validator generate a fatal error.
 
 # What is the syntax for securize it ?
