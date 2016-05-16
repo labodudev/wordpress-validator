@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Example Success
+ * Plugin Name: Example Failed
  * Plugin URI:
  * Description: An example with wordpress-validator
  * Version: 1.0.0
@@ -16,15 +16,9 @@ if ( !defined( 'ABSPATH' ) ) {
 add_action( 'wp_ajax_add_github', 'ajax_add_github' );
 
 function ajax_add_github() {
-  // Check nonce
-  $_wpnonce = sanitize_key( $_POST['_wpnonce'] );
-  if ( wp_verify_nonce( $_wpnonce, 'ajax_add_github' ) )
-    wp_send_json_error();
+  $email = $_POST['email'];
 
-  // Securize email
-  $email = sanitize_email( $_POST['email'] );
-
-  wp_send_json_success( array( 'All data is securized!' ) );
+  wp_send_json_success( array( 'All data is unsecurized!' ) );
 }
 
 ?>
