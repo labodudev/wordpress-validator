@@ -10,11 +10,11 @@ For request : http://yourwordpressurl.com/wp-content/plugins/yourplugin/test/req
 If you use it with travis-ci, all developper can see your WordPress plugin is properly securized.
 
 # Some examples with travis-ci
-[Example Success](https://github.com/labodudev/wordpress-validator/tree/example_success)
+[Example Success](https://github.com/labodudev/wordpress-validator/tree/example_success)\n
 [Example Failed](https://github.com/labodudev/wordpress-validator/tree/example_failed)
 
 # $_POST, $_GET, $_REQUEST
-When you use $_POST, $_GET or $_REQUEST you need to securize it.
+When you use $_POST, $_GET or $_REQUEST you need to securize it.\n
 If they're not protected, wordpress-validator generate a fatal error.
 
 # What is the syntax for securize it ?
