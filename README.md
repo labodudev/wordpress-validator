@@ -1,4 +1,4 @@
 # wordpress-validator-example-success
 
 An example with wordpress-validator.
-[![Build Status](https://travis-ci.org/labodudev/wordpress-validator.svg?branch=example_success&label=Linux)
+[![Build Status](https://img.shields.io/travis/labodudev/wordpress-validator/example_success.svg?label=Linux)](https://travis-ci.org/labodudev/wordpress-validator/builds/130520870)
