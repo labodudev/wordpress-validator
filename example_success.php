@@ -13,9 +13,6 @@ if ( !defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-include_once( 'test/nonce.test.php');
-include_once( 'test/request.test.php');
-
 add_action( 'wp_ajax_add_github', 'ajax_add_github' );
 
 function ajax_add_github() {
