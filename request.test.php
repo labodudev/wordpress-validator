@@ -9,7 +9,7 @@ echo "[+] Starting Request Tests" . PHP_EOL . PHP_EOL;
 $unitList = search_files('../', "/^.*\.php$/");
 $string_post_unsecured = array();
 $total_unsecured_line = 0;
-$pattern = '#\$_POST|\$_GET|\$_REQUEST\$_SESSION#';
+$pattern = '#\$_POST|\$_GET|\$_REQUEST|\$_SESSION#';
 
 // Loop on unitList
 foreach ( $unitList as $file_url )
@@ -23,7 +23,7 @@ foreach ( $unitList as $file_url )
 		foreach ( $lines as $key => $line ) {
 	    if ( preg_match( $pattern, $line ) ) {
 	      $lines[$key] = preg_replace( '#!empty\(.+?(\$_POST|\$_GET|\$_REQUEST|\$_SESSION)\[\'.+\'\].+?\) \?#isU', '', $lines[$key] );
-			if ( $file_url != "../test/request.test.php" ) {
+			if ( $file_url != "..\\test\\request.test.php" ) {
 			  if ( !preg_match( '#sanitize_.+#', $lines[$key] ) &&
 				!preg_match( '#\*#', $lines[$key] ) &&
 				!preg_match( '#\\/\/#', $lines[$key] ) &&
@@ -33,7 +33,7 @@ foreach ( $unitList as $file_url )
 				  $total_unsecured_line++;
 			  }
 
-			  if ( preg_match( '#(\$_POST|\$_GET|\$_REQUEST|\$_SESSION)\[\'.+\'\].+?\=#isU', $lines[$key] ) ) {
+			  if ( preg_match( '#(\$_POST|\$_GET|\$_REQUEST)\[\'.+\'\].+?\=#isU', $lines[$key] ) ) {
   				$string_post_unsecured[$file_url][$key + 1] = htmlentities( $lines[$key] );
   				$total_unsecured_line++;
 			  }
@@ -50,7 +50,21 @@ if ( !empty( $string_post_unsecured ) ) {
     if ( !empty( $file ) ) {
       echo "[+] File : " . $file_url . ' => Unsecured $_POST|$_GET|$_REQUEST|$_SESSION ' . count( $file ) . PHP_EOL . '<br />';
       foreach ( $file as $line => $content ) {
-        echo "[+] Line : " . $line . " => " . trim($content) . PHP_EOL . '<br />';
+        $color = "black";
+        if ( preg_match( '#\$_POST#', trim($content) ) ) {
+          $color = "#ea6153";
+        }
+        else if( preg_match( '#\$_GET#', trim($content) ) ) {
+          $color = "#3498db";
+        }
+        else if( preg_match( '#\$_REQUEST#', trim($content) ) ) {
+          $color = "#2ecc71";
+        }
+        else if( preg_match( '#\$_SESSION#', trim($content) ) ) {
+          $color = "#f1c40f";
+        }
+
+        echo "[+] <span style='color: " . $color . "'>Line : " . $line . " => " . trim($content) . PHP_EOL . '</span><br />';
       }
     }
   }
